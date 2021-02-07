@@ -31,16 +31,63 @@
 
 // №4 Усложненное
 
-function String(str){
-    do {str = prompt('Введите строку.');
-        if (Number(str) || str === null || str.trim() === '') 
-        { alert('Ошибка, повтоите ввод строки!');}
+// function String(str){
+//     do {str = prompt('Введите строку.');
+//         if (Number(str) || str === null || str.trim() === '') 
+//         { alert('Ошибка, повтоите ввод строки!');}
         
-        if (!str === null) {str = str.trim();}
-        console.log(str);
+//         if (!str === null) {str = str.trim();}
+//         console.log(str);
         
-    }   while (Number(str) || str === null || str.trim() === '');
-    if (str.length>10) {console.log(str.slice(0, 9) + '...');}
-else {console.log(str.trim());}
-}
-String();
+//     }   while (Number(str) || str === null || str.trim() === '');
+//     if (str.length>10) {console.log(str.slice(0, 9) + '...');}
+// else {console.log(str.trim());}
+// }
+// String();
+
+//Задание №6
+
+let isNumber = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+function Game() {
+let numberVar = Math.floor((Math.random()*100)+1);
+console.log('numberVar: ', numberVar);
+
+let n = 11;
+
+    function varNumber(number) {
+        n = n - 1;
+        if (n < 1) {
+            let answer = confirm('Извините, ваши попытки закончились. Хотите сыграть еще?');
+            if(answer) {Game();} else {return;}
+        }
+    number = prompt(`Угадай число от 1 до 100. Количество попыток: ${n}`);
+    
+    if (number === null) {
+        alert('Игра окончена!');
+    return;
+    }
+
+    if (!isNumber(number)) {
+    alert('Можно вводить только числа');
+    varNumber();
+    }
+
+    if (+number === numberVar) {
+    alert('Верно, Вы угадали загаданное число!');
+    return;
+
+    } else if (number < numberVar) {
+    alert('Загаданное число больше');
+    varNumber();
+    
+    } else if (number > numberVar) {
+    alert('Загаданное число меньше');
+    varNumber();
+    }
+    }
+    varNumber();
+    }
+Game();
